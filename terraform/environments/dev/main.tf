@@ -97,3 +97,11 @@ module "ec2_spot" {
 
   tags = local.common_tags
 }
+
+module "ollama" {
+  source = "../../modules/ollama"
+
+  instance_id = module.ec2_spot.instance_id
+
+  tags = local.common_tags
+}
