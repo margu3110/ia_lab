@@ -79,7 +79,7 @@ module "iam" {
 }
 
 module "ec2_spot" {
-  source = "git::ssh://git@github.com/margu3110/terraform-aws-modules.git//modules/ec2_spot?ref=v0.4.0"
+  source = "git::ssh://git@github.com/margu3110/terraform-aws-modules.git//modules/ec2_spot?ref=v0.4.1"
 
   name = local.project_name
 
@@ -99,7 +99,7 @@ module "ec2_spot" {
 }
 
 module "ollama" {
-  source = "../../modules/ollama"
+  source = "git::ssh://git@github.com/margu3110/terraform-aws-modules.git//modules/ollama?ref=v0.4.1"
 
   instance_id = module.ec2_spot.instance_id
 
