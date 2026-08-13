@@ -8,3 +8,8 @@ variable "terraform_module_version" {
   type        = string
   default     = "v0.4.2"
 }
+
+variable "zerotier_network_id" {
+  description = "ZeroTier network ID to join."
+  type        = string
+}
