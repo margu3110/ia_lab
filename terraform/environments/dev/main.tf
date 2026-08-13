@@ -1,5 +1,5 @@
 module "networking" {
-  source = "git::ssh://git@github.com/margu3110/terraform-aws-modules.git//modules/networking?ref=v0.4.3"
+  source = "git::ssh://git@github.com/margu3110/terraform-aws-modules.git//modules/networking?ref=v0.4.4"
 
   name = local.project_name
 
@@ -14,7 +14,7 @@ module "networking" {
 }
 
 module "security_group" {
-  source = "git::ssh://git@github.com/margu3110/terraform-aws-modules.git//modules/security_group?ref=v0.4.3"
+  source = "git::ssh://git@github.com/margu3110/terraform-aws-modules.git//modules/security_group?ref=v0.4.4"
 
   name        = "${local.project_name}-sg"
   description = "Security group for IA Lab"
@@ -51,7 +51,7 @@ module "security_group" {
 }
 
 module "iam" {
-  source = "git::ssh://git@github.com/margu3110/terraform-aws-modules.git//modules/iam?ref=v0.4.3"
+  source = "git::ssh://git@github.com/margu3110/terraform-aws-modules.git//modules/iam?ref=v0.4.4"
 
   name = local.project_name
 
@@ -79,7 +79,7 @@ module "iam" {
 }
 
 module "ec2_spot" {
-  source = "git::ssh://git@github.com/margu3110/terraform-aws-modules.git//modules/ec2_spot?ref=v0.4.3"
+  source = "git::ssh://git@github.com/margu3110/terraform-aws-modules.git//modules/ec2_spot?ref=v0.4.4"
 
   name = local.project_name
 
@@ -99,7 +99,7 @@ module "ec2_spot" {
 }
 
 module "ollama" {
-  source = "git::ssh://git@github.com/margu3110/terraform-aws-modules.git//modules/ollama?ref=v0.4.3"
+  source = "git::ssh://git@github.com/margu3110/terraform-aws-modules.git//modules/ollama?ref=v0.4.4"
 
   instance_id = module.ec2_spot.instance_id
 
@@ -107,7 +107,8 @@ module "ollama" {
 }
 
 module "zerotier" {
-  source = "git::ssh://git@github.com/margu3110/terraform-aws-modules.git//modules/zerotier?ref=v0.4.3"
+  source = "git::ssh://git@github.com/margu3110/terraform-aws-modules.git//modules/zerotier?ref=v0.4.4"
 
-  instance_id = module.ec2_spot.instance_id
+  instance_id       = module.ec2_spot.instance_id
+  network_id        = var.zerotier_network_id
 }
